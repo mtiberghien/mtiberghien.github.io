@@ -1,371 +1,139 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 800,
-  "height": 130,
-  "padding": 10,
-  "title": {"text": "Formation C/C++ Embarqué: Progressbar"},
+  "width":800,
+  "height":130,
+  "padding":10,
+  "title":{"text":"Formation C/C++ Embarqué: Progressbar"},
   "signals": [
-    {"name": "currentDate", "update": "now()"},
-    {"name": "currentDay", "update": "date(currentDate)"},
-    {"name": "currentMonth", "update": "month(currentDate)"},
-    {"name": "currentYear", "update": "year(currentDate)"},
-    {"name": "today", "update": "utc(currentYear, currentMonth, currentDay)"},
-    {"name": "startDate", "update": "utc(2022,10,7)"},
-    {"name": "endDate", "update": "utc(2023,0,25)"},
     {
-      "name": "days",
+      "name": "currentDate",
+      "update": "now()"
+    },
+    {
+      "name":"currentDay",
+      "update": "date(currentDate)"
+    },
+    {
+      "name":"currentMonth",
+      "update": "month(currentDate)"
+    },
+    {
+      "name":"currentYear",
+      "update": "year(currentDate)"
+    },
+    {
+      "name":"today",
+      "update":"utc(currentYear, currentMonth, currentDay)"
+
+    },
+    {
+      "name":"startDate",
+      "update": "utc(2022,10,7)"
+    },
+    {
+      "name":"endDate",
+      "update": "utc(2023,0,25)"
+    },
+    {
+      "name":"days",
       "update": "utcSequence('day', startDate, utcOffset('day', endDate))"
     },
-    {"name": "module", "update": "data('currentModule')[0]"},
     {
-      "name": "daysRemaining",
+      "name":"module",
+      "update": "data('currentModule')[0]"
+    },
+    {
+      "name":"daysRemaining",
       "update": "length(utcSequence('day', today, utcOffset('day',endDate))) - (length(data('joursRepos'))>0?data('joursRepos')[0].total:0)"
     }
   ],
   "data": [
     {
-      "name": "dates",
-      "format": {"parse": {"debut": "utc:%Y-%m-%d", "fin": "utc:%Y-%m-%d"}},
-      "values": [
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Algorithmie",
-          "code": 9601,
-          "type": "Environnement",
-          "enseignant": "Didier Razon"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Rôle et comportement du consultant",
-          "code": 6480,
-          "type": "Comportement",
-          "enseignant": "Sylvie Deprez"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Algorithmie",
-          "code": 8082,
-          "type": "Environnement",
-          "enseignant": "Didier Razon"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Rôle et comportement du consultant",
-          "code": 3930,
-          "type": "Comportement",
-          "enseignant": "Sylvie Deprez"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Présentation Linux",
-          "code": 2467,
-          "type": "Environnement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Commandes Linux",
-          "code": 7591,
-          "type": "Environnement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Shell Script",
-          "code": 4980,
-          "type": "Environnement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Administration Linux",
-          "code": 1797,
-          "type": "Environnement",
-          "enseignant": "Marc Brayer"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Administration Linux",
-          "code": 1797,
-          "type": "Environnement",
-          "enseignant": "Marc Brayer"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "GIT",
-          "code": 2190,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Programmation C",
-          "code": 9443,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Programmation C",
-          "code": 9443,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Projet C",
-          "code": 7509,
-          "type": "Projet",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Introduction au processus de test dans le développement logiciel",
-          "code": 6096,
-          "type": "Développement",
-          "enseignant": "N/A"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Dev. Open Source",
-          "code": 7468,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "C Vers C++ 11",
-          "code": 4332,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "C Vers C++ 11",
-          "code": 4332,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Temps Réel",
-          "code": 6944,
-          "type": "Temps Réel",
-          "enseignant": "Albert Pais"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "C Vers C++ 11",
-          "code": 9142,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "C Vers C++ 11",
-          "code": 9142,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Sqlite",
-          "code": 5512,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Debug",
-          "code": 1202,
-          "type": "Développement",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Projet C++",
-          "code": 1893,
-          "type": "Projet",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Linux Embarqué",
-          "code": 2688,
-          "type": "Embarqué",
-          "enseignant": "Marc Brayer"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Présenter ses nouvelles compétences",
-          "code": 3426,
-          "type": "Comportement",
-          "enseignant": "Sylvie Deprez"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Projet Final & Soutenance",
-          "code": 2139,
-          "type": "Projet",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Projet Final & Soutenance",
-          "code": 2139,
-          "type": "Projet",
-          "enseignant": "Steeve Assous"
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Week-end",
-          "code": 0,
-          "type": "Repos",
-          "enseignant": ""
-        },
-        {
-          "debut": 0,
-          "fin": 0,
-          "module": "Projet Final & Soutenance",
-          "code": 2139,
-          "type": "Projet",
-          "enseignant": "Steeve Assous"
-        }
-      ],
-      "transform": [
-        {"type": "formula", "expr": "time(datum.debut)", "as": "debut"},
-        {"type": "formula", "expr": "time(datum.fin)", "as": "fin"}
-      ]
+      "name":"dates",
+      "format":{"parse":{"debut":"utc:%Y-%m-%d","fin":"utc:%Y-%m-%d"}},
+      "values":[
+        {"debut":"2022-11-7", "fin":"2022-11-7", "module":"Algorithmie", "code":9601, "type":"Environnement", "enseignant":"Didier Razon"},
+        {"debut":"2022-11-8", "fin":"2022-11-8", "module":"Rôle et comportement du consultant", "code":6480, "type":"Comportement", "enseignant":"Sylvie Deprez"},
+        {"debut":"2022-11-9", "fin":"2022-11-9", "module":"Algorithmie", "code":8082, "type":"Environnement", "enseignant":"Didier Razon"},
+        {"debut":"2022-11-10", "fin":"2022-11-10", "module":"Rôle et comportement du consultant", "code":3930, "type":"Comportement", "enseignant":"Sylvie Deprez"},
+        {"debut":"2022-11-11", "fin":"2022-11-13", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-11-14", "fin":"2022-11-14", "module":"Présentation Linux", "code":2467, "type":"Environnement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-11-15", "fin":"2022-11-15", "module":"Commandes Linux", "code":7591, "type":"Environnement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-11-16", "fin":"2022-11-17", "module":"Shell Script", "code":4980, "type":"Environnement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-11-18", "fin":"2022-11-18", "module":"Administration Linux", "code":1797, "type":"Environnement", "enseignant":"Marc Brayer"},
+        {"debut":"2022-11-19", "fin":"2022-11-20", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-11-21", "fin":"2022-11-22", "module":"Administration Linux", "code":1797, "type":"Environnement", "enseignant":"Marc Brayer"},
+        {"debut":"2022-11-23", "fin":"2022-11-24", "module":"GIT", "code":2190, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-11-25", "fin":"2022-11-25", "module":"Programmation C", "code":9443, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-11-26", "fin":"2022-11-27", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-11-28", "fin":"2022-11-30", "module":"Programmation C", "code":9443, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-01", "fin":"2022-12-02", "module":"Projet C", "code":7509, "type":"Projet", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-03", "fin":"2022-12-04", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-12-05", "fin":"2022-12-06", "module":"Introduction au processus de test dans le développement logiciel", "code":6096, "type":"Développement", "enseignant":"N/A"},
+        {"debut":"2022-12-07", "fin":"2022-12-07", "module":"Dev. Open Source", "code":7468, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-08", "fin":"2022-12-09", "module":"C Vers C++ 11", "code":4332, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-10", "fin":"2022-12-11", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-12-12", "fin":"2022-12-16", "module":"C Vers C++ 11", "code":4332, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-17", "fin":"2022-12-18", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-12-19", "fin":"2022-12-22", "module":"Temps Réel", "code":6944, "type":"Temps Réel", "enseignant":"Albert Pais"},
+        {"debut":"2022-12-23", "fin":"2022-12-23", "module":"C Vers C++ 11", "code":9142, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-24", "fin":"2022-12-25", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2022-12-26", "fin":"2022-12-26", "module":"C Vers C++ 11", "code":9142, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-27", "fin":"2022-12-27", "module":"Sqlite", "code":5512, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-28", "fin":"2022-12-28", "module":"Debug", "code":1202, "type":"Développement", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-29", "fin":"2022-12-30", "module":"Projet C++", "code":1893, "type":"Projet", "enseignant":"Steeve Assous"},
+        {"debut":"2022-12-31", "fin":"2023-01-01", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2023-01-02", "fin":"2023-01-06", "module":"Linux Embarqué", "code":2688, "type":"Embarqué", "enseignant":"Marc Brayer"},
+        {"debut":"2023-01-07", "fin":"2023-01-08", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2023-01-09", "fin":"2023-01-09", "module":"Présenter ses nouvelles compétences", "code":3426, "type":"Comportement", "enseignant":"Sylvie Deprez"},
+        {"debut":"2023-01-10", "fin":"2023-01-13", "module":"Projet Final & Soutenance", "code":2139, "type":"Projet", "enseignant":"Steeve Assous"},
+        {"debut":"2023-01-14", "fin":"2023-01-15", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2023-01-16", "fin":"2023-01-20", "module":"Projet Final & Soutenance", "code":2139, "type":"Projet", "enseignant":"Steeve Assous"},
+        {"debut":"2023-01-21", "fin":"2023-01-22", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
+        {"debut":"2023-01-23", "fin":"2023-01-25", "module":"Projet Final & Soutenance", "code":2139, "type":"Projet", "enseignant":"Steeve Assous"}
+        ],
+        "transform": [
+          {
+            "type": "formula",
+            "expr": "time(datum.debut)",
+            "as":"debut"
+          },
+          {
+            "type": "formula",
+            "expr": "time(datum.fin)",
+            "as":"fin"
+          }
+        ]
     },
     {
-      "name": "currentModule",
-      "source": "dates",
-      "transform": [
-        {"type": "filter", "expr": "datum.debut<=today && datum.fin>=today"}
-      ]
-    },
-    {
-      "name": "joursRepos",
-      "source": "dates",
+      "name":"currentModule",
+      "source":"dates",
       "transform": [
         {
           "type": "filter",
-          "expr": "datum.type==='Repos' && today <= datum.fin"
+          "expr": "datum.debut<=today && datum.fin>=today"
+        }
+      ]
+    },
+    {
+      "name":"joursRepos",
+      "source":"dates",
+      "transform": [
+        {
+          "type": "filter",
+          "expr":"datum.type==='Repos' && today <= datum.fin"
         },
         {
           "type": "formula",
           "expr": "length(utcSequence('day', (today>datum.debut ? today : datum.debut), utcOffset('day',datum.fin)))",
           "as": "nb"
         },
-        {"type": "aggregate", "fields": ["nb"], "ops": ["sum"], "as": ["total"]}
+        {
+          "type": "aggregate",
+          "fields":["nb"],
+          "ops":["sum"],
+          "as":["total"]
+        }
       ]
     }
   ],
@@ -373,134 +141,112 @@
     {
       "name": "x",
       "type": "linear",
-      "domain": {"data": "dates", "fields": ["debut", "fin"]},
-      "zero": false,
-      "range": "width"
+      "domain": {"data": "dates", "fields":["debut","fin"]},
+      "zero":false,
+      "range":"width"
     },
     {
       "name": "type",
       "type": "ordinal",
-      "domain": {"data": "dates", "field": "type"},
-      "range": [
-        "#95b3d7",
-        "#0f243e",
-        "gray",
-        "#da9694",
-        "#4f6228",
-        "#fabf8f",
-        "#b1a0c7"
-      ]
+      "domain":{"data":"dates", "field":"type"},
+      "range":["#95b3d7", "#0f243e", "gray", "#da9694", "#4f6228", "#fabf8f", "#b1a0c7"]
     }
   ],
-  "legends": [{"fill": "type", "direction": "horizontal", "orient": "bottom"}],
+  "legends": [
+    {
+      "fill": "type",
+      "direction": "horizontal",
+      "orient":"bottom"
+    }
+  ],
   "marks": [
     {
       "type": "rect",
-      "from": {"data": "dates"},
+      "from": {"data":"dates"},
       "encode": {
-        "enter": {
-          "yc": {"value": 50},
-          "height": {"value": 50},
-          "x": {"field": "debut", "scale": "x"},
-          "x2": {"signal": "utcOffset('day',datum.fin)", "scale": "x"},
-          "cornerRadiusTopLeft": [
-            {"test": "datum.debut === startDate", "value": 10}
-          ],
-          "cornerRadiusBottomLeft": [
-            {"test": "datum.fin === startDate", "value": 10}
-          ],
-          "cornerRadiusTopRight": [
-            {"test": "datum.fin === endDate", "value": 10}
-          ],
-          "cornerRadiusBottomRight": [
-            {"test": "datum.fin === endDate", "value": 10}
-          ],
-          "stroke": {"value": "lightgray"},
-          "fill": {"field": "type", "scale": "type"},
-          "tooltip": {
-            "signal": "{'module':datum.module, 'type':datum.type, 'code':datum.code, 'enseignant':datum.enseignant}"
-          }
+        "enter":
+        {
+          "yc":{"value": 50},
+          "height":{"value": 50},
+          "x":{"field":"debut", "scale":"x"},
+          "x2":{"signal": "utcOffset('day',datum.fin)", "scale":"x"},
+          "cornerRadiusTopLeft":[{"test": "datum.debut === startDate", "value": 10}],
+          "cornerRadiusBottomLeft":[{"test": "datum.fin === startDate", "value": 10}],
+          "cornerRadiusTopRight":[{"test": "datum.fin === endDate", "value": 10}],
+          "cornerRadiusBottomRight":[{"test": "datum.fin === endDate", "value": 10}],
+          "stroke":{"value":"lightgray"},
+          "fill":{"field":"type", "scale":"type"},
+
+          "tooltip":{"signal":"{'module':datum.module, 'type':datum.type, 'code':datum.code, 'enseignant':datum.enseignant}"}
         }
       }
     },
     {
       "type": "rect",
-      "interactive": false,
+      "interactive":false,
       "encode": {
-        "enter": {
-          "y": {"value": 75},
-          "height": {"value": 10},
-          "x": {"signal": "startDate", "scale": "x"},
-          "x2": {"signal": "today", "scale": "x"},
-          "cornerRadius": {"value": 10},
-          "fill": {"value": "yellowGreen"},
-          "fillOpacity": {"value": 0.7}
+        "enter":
+        {
+          "y":{"value": 75},
+          "height":{"value": 10},
+          "x":{"signal":"startDate", "scale":"x"},
+          "x2":{"signal": "today", "scale":"x"},
+          "cornerRadius":{"value": 10},
+          "fill":{"value":"yellowGreen"},
+          "fillOpacity":{"value":0.7}
         }
       }
     },
     {
       "type": "rect",
       "from": {"data": "currentModule"},
-      "interactive": false,
+      "interactive":false,
       "encode": {
-        "enter": {
-          "yc": {"value": 50},
-          "height": {"value": 60},
-          "x": {"signal": "today", "scale": "x"},
-          "x2": {"signal": "utcOffset('day',today)", "scale": "x"},
-          "cornerRadius": {"value": 10},
-          "fill": {"field": "type", "scale": "type"}
+        "enter":
+        {
+          "yc":{"value": 50},
+          "height":{"value": 60},
+          "x":{"signal":"today", "scale":"x"},
+          "x2":{"signal": "utcOffset('day',today)", "scale":"x"},
+          "cornerRadius":{"value": 10},
+          "fill":{"field":"type", "scale":"type"}
         }
       }
     },
     {
       "type": "text",
       "encode": {
-        "enter": {
-          "yc": {"value": 10},
-          "xc": {"signal": "width", "mult": 0.5},
-          "align": {"value": "center"},
-          "fontSize": {"value": 14},
-          "text": {
-            "signal": "timeFormat(today,'%d/%m/%Y')+' ( '+daysRemaining+' jour'+(daysRemaining>1?'s':'')+' restant )'"
-          }
+        "enter":{
+          "yc":{"value":10},
+          "xc":{"signal": "width", "mult":0.5},
+          "align":{"value":"center"},
+          "fontSize":{"value":14},
+          "text":{"signal":"timeFormat(today,'%d/%m/%Y')+' ( '+daysRemaining+' jour'+(daysRemaining>1?'s':'')+' restant )'"}
         }
       }
     },
     {
       "type": "text",
       "encode": {
-        "enter": {
-          "yc": {"value": 100},
-          "x": {"signal": "width", "mult": 0.5},
-          "fontSize": {"value": 14},
-          "fontWeight": {"value": "bold"},
-          "align": {"value": "right"},
-          "text": [
-            {
-              "test": "module.type != 'Repos'",
-              "value": ["Code:", "Module:", "Enseignant:"]
-            },
-            {"value": "Module:"}
-          ]
+        "enter":{
+          "yc":{"value":100},
+          "x":{"signal":"width", "mult":0.5},
+          "fontSize":{"value":14},
+          "fontWeight":{"value":"bold"},
+          "align":{"value":"right"},
+          "text":[{"test":"module.type != 'Repos'","value":["Code:","Module:","Enseignant:"]},{"value": "Module:"}]
         }
       }
     },
     {
       "type": "text",
       "encode": {
-        "enter": {
-          "yc": {"value": 100},
-          "x": {"signal": "width", "mult": 0.5},
-          "fontSize": {"value": 14},
-          "align": {"value": "left"},
-          "text": [
-            {
-              "test": "module.type != 'Repos'",
-              "signal": "[module.code, module.module, module.enseignant]"
-            },
-            {"signal": "module.module"}
-          ]
+        "enter":{
+          "yc":{"value":100},
+          "x":{"signal":"width", "mult":0.5},
+          "fontSize":{"value":14},
+          "align":{"value":"left"},
+          "text":[{"test":"module.type != 'Repos'","signal":"[module.code, module.module, module.enseignant]"},{"signal": "module.module"}]
         }
       }
     }
