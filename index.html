@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Formation C/C++ Embarqué</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<style>
+</style>
+<body>
+<section class="hero is-fullheight">
+  <div class="hero-body">
+	<div id="container" class="container has-text-centered">
+	<div id="widget"></div>
+	</div>
+  </div>
+</section>
+
+
+
+<script type="text/javascript">
+var spec = "https://gist.githubusercontent.com/mtiberghien/d3a2b10899a6ce3a727540fdf813520d/raw/7ffb49798e590c4a928702280976cee7d9e22d98/formation_progress_bar.json";
+  vegaEmbed('#widget', spec).then(function(result) {
+  }).catch(console.error);
+  
+</script>
+</body>
+</html>
