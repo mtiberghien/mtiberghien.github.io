@@ -45,6 +45,10 @@
     {
       "name":"daysRemaining",
       "update": "length(utcSequence('day', today, utcOffset('day',endDate))) - (length(data('joursRepos'))>0?data('joursRepos')[0].total:0)"
+    },
+    {
+      "name": "progressPercent",
+      "update": "min(1,scale('x',today)/width)"
     }
   ],
   "data": [
@@ -175,21 +179,14 @@
           "cornerRadiusTopRight":[{"test": "datum.fin === endDate", "value": 10}],
           "cornerRadiusBottomRight":[{"test": "datum.fin === endDate", "value": 10}],
           "stroke":{"value":"lightgray"},
-          
+          "fill":{"field":"type", "scale":"type"},
 
-          "tooltip":{"signal":"{'module':datum.module, 'type':datum.type, 'code':datum.code, 'enseignant':datum.enseignant, 'début':timeFormat(datum.debut, '%d/%m'), 'fin':timeFormat(datum.fin, '%d/%m')}"}
-        },
-        "update":{
-          "fill":{"field":"type", "scale":"type"}
-        },
-        "hover":{
-          "fill":{"value":"greenyellow"}
+          "tooltip":{"signal":"{'module':datum.module, 'type':datum.type, 'code':datum.code, 'enseignant':datum.enseignant}"}
         }
       }
     },
     {
       "type": "rect",
-      "from": {"data": "currentModule"},
       "interactive":false,
       "encode": {
         "enter":
@@ -212,11 +209,10 @@
         "enter":
         {
           "yc":{"value": 50},
-          "height":{"value": 70},
+          "height":{"value": 60},
           "x":{"signal":"today", "scale":"x"},
           "x2":{"signal": "utcOffset('day',today)", "scale":"x"},
           "cornerRadius":{"value": 10},
-          "stroke":{"value":"lightgray"},
           "fill":{"field":"type", "scale":"type"}
         }
       }
@@ -229,7 +225,7 @@
           "xc":{"signal": "width", "mult":0.5},
           "align":{"value":"center"},
           "fontSize":{"value":14},
-          "text":{"signal":"timeFormat(today,'%d/%m/%Y')+' ( '+daysRemaining+' jour'+(daysRemaining>1?'s':'')+' restant )'"}
+          "text":{"signal":"timeFormat(today,'%d/%m/%Y')+' ( '+daysRemaining+' jour'+(daysRemaining>1?'s':'')+' restant , '+format(progressPercent,'.0%')+' effectué )'"}
         }
       }
     },
