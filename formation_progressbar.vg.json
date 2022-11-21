@@ -179,9 +179,15 @@
           "cornerRadiusTopRight":[{"test": "datum.fin === endDate", "value": 10}],
           "cornerRadiusBottomRight":[{"test": "datum.fin === endDate", "value": 10}],
           "stroke":{"value":"lightgray"},
-          "fill":{"field":"type", "scale":"type"},
-
           "tooltip":{"signal":"{'module':datum.module, 'type':datum.type, 'code':datum.code, 'enseignant':datum.enseignant}"}
+        },
+        "update":
+        {
+          "fill":{"field":"type", "scale":"type"}
+        },
+        "hover":
+        {
+          "fill":{"value": "yellowgreen"}
         }
       }
     },
