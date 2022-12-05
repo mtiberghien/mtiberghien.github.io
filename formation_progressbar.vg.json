@@ -244,7 +244,7 @@
           "fontSize":{"value":14},
           "fontWeight":{"value":"bold"},
           "align":{"value":"right"},
-          "text":[{"test":"module.type != 'Repos'","value":["Code:","Module:","Enseignant:"]},{"value": "Module:"}]
+          "text":[{"test":"module.type != 'Repos'","value":["Code:","Module:","Enseignant(e):"]},{"value": "Module:"}]
         }
       }
     },
