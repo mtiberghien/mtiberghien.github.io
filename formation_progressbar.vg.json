@@ -73,7 +73,7 @@
         {"debut":"2022-11-28", "fin":"2022-11-30", "module":"Programmation C", "code":9443, "type":"Développement", "enseignant":"Steeve Assous"},
         {"debut":"2022-12-01", "fin":"2022-12-02", "module":"Projet C", "code":7509, "type":"Projet", "enseignant":"Steeve Assous"},
         {"debut":"2022-12-03", "fin":"2022-12-04", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
-        {"debut":"2022-12-05", "fin":"2022-12-06", "module":"Introduction au processus de test dans le développement logiciel", "code":6096, "type":"Développement", "enseignant":"N/A"},
+        {"debut":"2022-12-05", "fin":"2022-12-06", "module":"Introduction au processus de test dans le développement logiciel", "code":6096, "type":"Développement", "enseignant":"Khouloud Mejdoub"},
         {"debut":"2022-12-07", "fin":"2022-12-07", "module":"Dev. Open Source", "code":7468, "type":"Développement", "enseignant":"Steeve Assous"},
         {"debut":"2022-12-08", "fin":"2022-12-09", "module":"C Vers C++ 11", "code":4332, "type":"Développement", "enseignant":"Steeve Assous"},
         {"debut":"2022-12-10", "fin":"2022-12-11", "module":"Week-end", "code":0, "type":"Repos", "enseignant":""},
