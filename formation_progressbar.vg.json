@@ -44,7 +44,11 @@
     },
     {
       "name":"daysRemaining",
-      "update": "length(utcSequence('day', today, utcOffset('day',endDate))) - (length(data('joursRepos'))>0?data('joursRepos')[0].total:0)"
+      "update": "length(utcSequence('day', today, utcOffset('day',endDate))) - (length(data('joursReposFuturs'))>0?data('joursReposFuturs')[0].total:0)"
+    },
+    {
+        "name": "daysAchieved",
+        "update": "length(utcSequence('day', startDate, utcOffset('day',today))) - (length(data('joursReposPasses'))>0?data('joursReposPasses')[0].total:0) - 1"
     },
     {
       "name": "progressPercent",
@@ -120,7 +124,7 @@
       ]
     },
     {
-      "name":"joursRepos",
+      "name":"joursReposFuturs",
       "source":"dates",
       "transform": [
         {
@@ -139,7 +143,29 @@
           "as":["total"]
         }
       ]
+    },
+    {
+      "name":"joursReposPasses",
+      "source":"dates",
+      "transform": [
+        {
+          "type": "filter",
+          "expr":"datum.type==='Repos' && today >= datum.debut"
+        },
+        {
+          "type": "formula",
+          "expr": "length(utcSequence('day', (today<=datum.fin ? today : datum.debut), utcOffset('day',datum.fin)))",
+          "as": "nb"
+        },
+        {
+          "type": "aggregate",
+          "fields":["nb"],
+          "ops":["sum"],
+          "as":["total"]
+        }
+      ]
     }
+
   ],
   "scales": [
     {
@@ -193,17 +219,33 @@
     },
     {
       "type": "rect",
+      "name": "progress",
       "interactive":false,
       "encode": {
         "enter":
         {
           "y":{"value": 75},
-          "height":{"value": 10},
+          "height":{"value": 12},
           "x":{"signal":"startDate", "scale":"x"},
           "x2":{"signal": "today", "scale":"x"},
           "cornerRadius":{"value": 10},
           "fill":{"value":"yellowGreen"},
           "fillOpacity":{"value":0.7}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "progress"},
+      "interactive":false,
+      "encode": {
+        "enter":
+        {
+          "y": {"signal": "datum.y", "offset":1},
+          "x": {"signal": "datum.width", "mult":0.5},
+          "align":{"value":"center"},
+          "baseline":{"value": "top"},
+          "text": {"signal": "format(progressPercent, '.0%')"}
         }
       }
     },
@@ -231,7 +273,7 @@
           "xc":{"signal": "width", "mult":0.5},
           "align":{"value":"center"},
           "fontSize":{"value":14},
-          "text":{"signal":"timeFormat(today,'%d/%m/%Y')+' ( '+daysRemaining+' jour'+(daysRemaining>1?'s':'')+' restant , '+format(progressPercent,'.0%')+' effectué )'"}
+          "text":{"signal":"timeFormat(today,'%d/%m/%Y')+' ( '+daysRemaining+' jour'+(daysRemaining>1?'s':'')+' restant , '+daysAchieved+' jour'+(daysAchieved>1?'s':'')+' effectué' +(daysAchieved>1?'s':'')+' )'"}
         }
       }
     },
