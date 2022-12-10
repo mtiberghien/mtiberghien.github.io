@@ -150,7 +150,7 @@
       "transform": [
         {
           "type": "filter",
-          "expr":"datum.type==='Repos' && today >= datum.debut"
+          "expr":"datum.type==='Repos' && today > datum.debut"
         },
         {
           "type": "formula",
